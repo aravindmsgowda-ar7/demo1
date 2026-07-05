@@ -1,8 +1,11 @@
 package Entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Transient;
 
@@ -15,18 +18,18 @@ public class Employee {
 	private String ename;
 //	@Transient                               // to skip the storing of data to database
 	private String designation;
-	@OneToOne
-	private Laptop laptop;
+	@OneToMany(mappedBy = "emp")
+	private List<Laptop> laptop;
 	public int getEid() {
 		return eid;
 	}
 	public void setEid(int eid) {
 		this.eid = eid;
 	}
-	public Laptop getLaptop() {
+	public List<Laptop> getLaptop() {
 		return laptop;
 	}
-	public void setLaptop(Laptop laptop) {
+	public void setLaptop(List<Laptop> laptop) {
 		this.laptop = laptop;
 	}
 	public String getEname() {
